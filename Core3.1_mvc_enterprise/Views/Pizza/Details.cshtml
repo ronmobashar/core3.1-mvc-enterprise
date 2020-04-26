@@ -1,0 +1,50 @@
+﻿@using System.Net
+@using System.Threading.Tasks
+@model PizzaDetailViewModel
+
+<div class="thumbnail">
+    <img alt="@Model.Pizza.Name" src="@Model.Pizza.ImageUrl">
+    <div class="caption-full">
+        <h3 class="pull-right">@Model.Pizza.Price</h3>
+        <h3>
+            <a href="#">@Model.Pizza.Name</a>
+        </h3>
+        <h4>@Model.Pizza.ShortDescription</h4>
+        <p>@Model.Pizza.LongDescription</p>
+        <p class="button">
+            <a class="btn btn-primary" asp-controller="ShoppingCart" asp-action="AddToShoppingCart"
+               asp-route-pizzaId="@Model.Pizza.PizzaId">Add to cart</a>
+        </p>
+    </div>
+</div>
+
+<h3>Reviews for this pizza</h3>
+
+@foreach (var review in @Model.Pizza.PizzaReviews)
+{
+    @*@Html.Raw(@review.Review)*@
+    <div>@WebUtility.HtmlDecode(review.Review) </div>
+    <hr />
+}
+
+<form asp-controller="Pizza" asp-action="Details" method="post" class="form-horizontal" role="form">
+    <h4>Write a review</h4>
+    <hr />
+    <input type="hidden" asp-for="@Model.Pizza.PizzaId" />
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Review" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Review" class="form-control" />
+            <span asp-validation-for="Review" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-primary" value="Send review" />
+        </div>
+    </div>
+
+</form>

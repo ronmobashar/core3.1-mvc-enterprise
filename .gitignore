@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Core3.1_mvc_enterprise/obj
+/.vs
+/Core3.1_mvc_enterprise/.vs/Core3.1_mvc_enterprise/v16
+/Core3.1-mvc-enterprise.Tests/bin/Debug/netcoreapp3.1
+/Core3.1-mvc-enterprise.Tests/obj
+/Core3.1_mvc_enterprise/.vs/Core3.1_mvc_enterprise
+/Core3.1_mvc_enterprise/bin/Debug/netcoreapp3.1
